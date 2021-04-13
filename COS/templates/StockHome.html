@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- MDBootstrap Datatables  -->
+<link href="css/addons/datatables.min.css" rel="stylesheet">
+    <!-- MDBootstrap Datatables  -->
+<script type="text/javascript" src="js/addons/datatables.min.js"></script>
+    <style>
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  margin-left:-5px;
+  margin-right:-5px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+</style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+  $('#dtBasicExample').DataTable();
+  $('.dataTables_length').addClass('bs-select');
+});
+    </script>
+</head>
+
+<body>
+
+<h2 style="text-align: center">BOMBAY STOCK EXCHANGE</h2>
+
+<div class="row">
+  <div class="column">
+  <h2>TOP GAINER</h2>
+    <table>
+      <tr>
+       <td>Name</td>
+        <td>Price</td>
+        <td>Change price</td>
+        <td>Change%</td>
+      </tr>
+      {% for foo in gainer %}
+        <tr>
+            <td>{{ foo.securityID }}</td>
+            <td>{{ foo.LTP }}</td>
+            <td>{{ foo.change }}</td>
+            <td>{{ foo.pChange }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+  </div>
+  <div class="column">
+   <h2>TOP LOOSER</h2>
+    <table>
+      <tr>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Change price</td>
+        <td>Change%</td>
+    </tr>
+      {% for foo in looser %}
+        <tr>
+            <td>{{ foo.securityID }}</td>
+            <td>{{ foo.LTP }}</td>
+            <td>{{ foo.change }}</td>
+            <td>{{ foo.pChange }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+  </div>
+</div>
+
+</body>
+</html>
+<h1> All Stocks</h1>
+<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+    </tr>
+    {% for keys, values in getAlL.items %}
+        <tr>
+            <td>{{ keys }}</td>
+            <td>{{ values }}</td>
+
+        </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
